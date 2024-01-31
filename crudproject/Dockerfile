@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php \
     && HASH=`curl -sS https://composer.github.io/installer.sig` \
-    && php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; exit(1); } echo PHP_EOL;" \
+    && php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/tmp/composer-setup.php'); } echo PHP_EOL;" \
     && php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && rm /tmp/composer-setup.php
 
@@ -25,13 +25,12 @@ RUN curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php \
 COPY . /var/www/html/
 
 # Install project dependencies
-RUN composer install --no-scripts --no-autoloader \
-    && composer dump-autoload --optimize
+RUN composer install
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"]
+# Expose port 8000 and start php artisan serve
+EXPOSE 8000
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
