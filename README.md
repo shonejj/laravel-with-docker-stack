@@ -40,7 +40,6 @@ Use the following command to start the application:
 Ensure you have Docker installed on your machine before running the sail up command.
 You may need to configure environment variables or update Docker settings according to your specific requirements.
 <p align="center">
-    Made by (https://github.com/shonejj)
+    Made by Shone (https://github.com/shonejj)
 </p>
 ```
-Feel free to modify the decorations or content further!
