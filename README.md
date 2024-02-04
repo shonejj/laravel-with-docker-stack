@@ -42,4 +42,3 @@ You may need to configure environment variables or update Docker settings accord
 <p align="center">
     Made by Shone (https://github.com/shonejj)
 </p>
-```
