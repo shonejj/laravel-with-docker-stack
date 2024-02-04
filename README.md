@@ -34,7 +34,7 @@ Use the following command to start the application:
 ./vendor/bin/sail up
 ```
 
-### Once the containers are up and running, you can access your Laravel application at http://localhost and PHPMyAdmin at http://localhost:8080.
+### Once the containers are up and running, you can access your Laravel application at http://localhost and PHPMyAdmin at http://localhost:8001.
 
 📝 Notes
 Ensure you have Docker installed on your machine before running the sail up command.
